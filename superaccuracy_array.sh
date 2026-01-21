@@ -8,15 +8,16 @@
 #SBATCH --cpus-per-task=24
 #SBATCH --mem=64G
 #SBATCH --time=24:00:00
-#SBATCH --output=dorado_basecall_%A_%a.log
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=duttonc@ufl.edu
-#SBATCH --array=0-68
+#SBATCH --mail-user=agoeckner@ufl.edu
+#SBATCH --array=0-73
+#SBATCH -o /blue/duttonc/agoeckner/DOE_16S/99_logs/superaccuracy_%A_%a.out
+#SBATCH -e /blue/duttonc/agoeckner/DOE_16S/99_logs/superaccuracy_%A_%a.err
 
 cd /blue/duttonc/agoeckner/DOE_16S/01_pod5/20251118_Goeckner_DOE_April2025-July2025_pod5
 
 # Ensure output directory exists
-OUTPUT_DIR="./02_superaccuracy/20251118_Goeckner_DOE_April2025-July2025_super"
+OUTPUT_DIR="/blue/duttonc/agoeckner/DOE_16S/02_superaccuracy/20251118_Goeckner_DOE_April2025-July2025_super"
 mkdir -p "$OUTPUT_DIR" #-p checks to see if directory exists, skips if it does 
 
 # Gather .pod5 files in /blue/duttonc/agoeckner/DOE_16S/01_pod5
