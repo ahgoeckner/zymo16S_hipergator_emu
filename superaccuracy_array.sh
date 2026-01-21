@@ -13,13 +13,13 @@
 #SBATCH --mail-user=duttonc@ufl.edu
 #SBATCH --array=0-68
 
-cd /blue/duttonc/duttonc/giraffe
+cd /blue/duttonc/agoeckner/DOE_16S/01_pod5/20251118_Goeckner_DOE_April2025-July2025_pod5
 
 # Ensure output directory exists
-OUTPUT_DIR="superaccuracy"
-mkdir -p "$OUTPUT_DIR"
+OUTPUT_DIR="./02_superaccuracy/20251118_Goeckner_DOE_April2025-July2025_super"
+mkdir -p "$OUTPUT_DIR" #-p checks to see if directory exists, skips if it does 
 
-# Gather .pod5 files in /blue/duttonc/duttonc/giraffe/
+# Gather .pod5 files in /blue/duttonc/agoeckner/DOE_16S/01_pod5
 pod5_files=( *.pod5 )
 
 POD5_FILE="${pod5_files[$SLURM_ARRAY_TASK_ID]}"
