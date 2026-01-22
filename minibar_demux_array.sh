@@ -7,13 +7,14 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=8G
 #SBATCH --time=48:00:00
-#SBATCH --output=minibar_demux_serial.log
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=duttonc@ufl.edu
+#SBATCH --mail-user=agoeckner@ufl.edu
+#SBATCH -o /blue/duttonc/agoeckner/DOE_16S/99_logs/demux1.o
+#SBATCH -e /blue/duttonc/agoeckner/DOE_16S/99_logs/demux1.e
 
 module load apptainer
 
-WORKDIR="/blue/duttonc/duttonc/giraffe/superaccuracy"
+WORKDIR="/blue/duttonc/agoeckner/DOE_16S/02_superaccuracy/20251118_Goeckner_DOE_April2025-July2025_super"
 MINIBAR_SIF="/blue/duttonc/duttonc/giraffe/minibar_latest.sif"
 
 cd "$WORKDIR"
