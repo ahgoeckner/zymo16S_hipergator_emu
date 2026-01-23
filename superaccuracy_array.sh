@@ -11,13 +11,13 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=agoeckner@ufl.edu
 #SBATCH --array=0-73
-#SBATCH -o /blue/duttonc/agoeckner/DOE_16S/99_logs/superaccuracy_%A_%a.out
-#SBATCH -e /blue/duttonc/agoeckner/DOE_16S/99_logs/superaccuracy_%A_%a.err
+#SBATCH -o /blue/duttonc/agoeckner/DOE_16S/99_logs/superaccuracy-2_%A_%a.out
+#SBATCH -e /blue/duttonc/agoeckner/DOE_16S/99_logs/superaccuracy-2_%A_%a.err
 
-cd /blue/duttonc/agoeckner/DOE_16S/01_pod5/20251118_Goeckner_DOE_April2025-July2025_pod5
+cd /blue/duttonc/agoeckner/DOE_16S/01_pod5/20260106_Goeckner_DOE_Nov2024-Feb2025_pod5
 
 # Ensure output directory exists
-OUTPUT_DIR="/blue/duttonc/agoeckner/DOE_16S/02_superaccuracy/20251118_Goeckner_DOE_April2025-July2025_super"
+OUTPUT_DIR="/blue/duttonc/agoeckner/DOE_16S/02_superaccuracy/20260106_Goeckner_DOE_Nov2024-Feb2025_super"
 mkdir -p "$OUTPUT_DIR" #-p checks to see if directory exists, skips if it does 
 
 # Gather .pod5 files in /blue/duttonc/agoeckner/DOE_16S/01_pod5
