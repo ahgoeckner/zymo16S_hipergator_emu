@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Script to properly combine EMU counts by matching tax_id
-cd /blue/duttonc/a.gabrys/WaterPans/WaterPansRun1/superaccuracy/emu_tax
+# Directory of emu output (each sample has their own folder)
+cd /blue/duttonc/agoeckner/DOE_16S/03_emu_tax/20251118_Goeckner_DOE_April2025-July2025_emu
 
 echo "Creating combined counts table with proper row matching..."
 
