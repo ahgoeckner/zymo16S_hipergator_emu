@@ -1,5 +1,16 @@
 #!/bin/bash
 
+#SBATCH --job-name=emu_combine_1
+#SBATCH --account=duttonc
+#SBATCH --qos=duttonc
+#SBATCH --partition=hpg-turin
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=8G
+#SBATCH --time=2:00:00
+#SBATCH --output=/blue/duttonc/agoeckner/DOE_16S/99_logs/emu_combine_1.log
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=agoeckner@ufl.edu
+
 # Directory of emu output (each sample has their own folder)
 cd /blue/duttonc/agoeckner/DOE_16S/03_emu_tax/20251118_Goeckner_DOE_April2025-July2025_emu
 
