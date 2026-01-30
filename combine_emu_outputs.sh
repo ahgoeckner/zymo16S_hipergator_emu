@@ -28,7 +28,7 @@ sort -u >> all_unique_taxa.tsv
 # Find which samples exist
 SAMPLES=()
 echo -e "tax_id" > combined_emu_counts.tsv
-for i in {193..288}; do
+for i in {289..384}; do
     if [[ -f "S${i}/S${i}_merged_for_emu.fastq_rel-abundance.tsv" ]]; then
         SAMPLES+=("S${i}")
         printf "\tS${i}" >> combined_emu_counts.tsv
