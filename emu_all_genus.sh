@@ -1,13 +1,13 @@
 #!/bin/bash
 
-#SBATCH --job-name=emu_batch1_genus
+#SBATCH --job-name=emu_batch2_genus
 #SBATCH --account=duttonc
 #SBATCH --qos=duttonc
 #SBATCH --partition=hpg-turin
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --time=32:00:00
-#SBATCH --output=/blue/duttonc/agoeckner/DOE_16S/99_logs/emu_batch1genus-2_%j.log
+#SBATCH --output=/blue/duttonc/agoeckner/DOE_16S/99_logs/emu_batch2genus_%j.log
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=agoeckner@ufl.edu
 
@@ -38,12 +38,12 @@ if [ ! -d "$EMU_DB_DIR" ] || [ ! -f "$EMU_DB_DIR/species_taxid.fasta" ]; then
     cd -
 fi
 
-INPUT_ROOT="/blue/duttonc/agoeckner/DOE_16S/02_superaccuracy/20251118_Goeckner_DOE_April2025-July2025_super"
-OUTPUT_ROOT="/blue/duttonc/agoeckner/DOE_16S/03_emu_tax/20251118_Goeckner_DOE_April2025-July2025_genus"
+INPUT_ROOT="/blue/duttonc/agoeckner/DOE_16S/02_superaccuracy/20260106_Goeckner_DOE_Nov2024-Feb2025_super"
+OUTPUT_ROOT="/blue/duttonc/agoeckner/DOE_16S/03_emu_tax/20260106_Goeckner_DOE_Nov2024-Feb2025_genus"
 mkdir -p "$OUTPUT_ROOT"
 
 # Loop ONLY over S193-288 or S289-S384, checking and skipping processed samples.
-for i in $(seq 270 288); do
+for i in $(seq 289 384); do
     SAMPLE="S${i}"
     SAMPLE_DIR="$INPUT_ROOT/$SAMPLE"
     OUTDIR="$OUTPUT_ROOT/$SAMPLE"
