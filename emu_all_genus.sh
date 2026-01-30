@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --time=32:00:00
-#SBATCH --output=/blue/duttonc/agoeckner/DOE_16S/99_logs/emu_batch1genus_%j.log
+#SBATCH --output=/blue/duttonc/agoeckner/DOE_16S/99_logs/emu_batch1genus-2_%j.log
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=agoeckner@ufl.edu
 
@@ -43,7 +43,7 @@ OUTPUT_ROOT="/blue/duttonc/agoeckner/DOE_16S/03_emu_tax/20251118_Goeckner_DOE_Ap
 mkdir -p "$OUTPUT_ROOT"
 
 # Loop ONLY over S193-288 or S289-S384, checking and skipping processed samples.
-for i in $(seq 193 288); do
+for i in $(seq 270 288); do
     SAMPLE="S${i}"
     SAMPLE_DIR="$INPUT_ROOT/$SAMPLE"
     OUTDIR="$OUTPUT_ROOT/$SAMPLE"
