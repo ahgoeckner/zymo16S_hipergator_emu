@@ -60,7 +60,7 @@ done < <(tail -n +2 all_unique_taxa.tsv)
 paste all_unique_taxa.tsv <(cut -f2- combined_emu_counts.tsv) > combined_emu_counts_with_taxonomy_genus.tsv
 
 # Step 5: Create CSV version (from final table with taxonomy)
-sed 's/\t/,/g' combined_emu_counts_with_taxonomy_species.tsv > combined_emu_counts_with_taxonomy_genus.csv
+sed 's/\t/,/g' combined_emu_counts_with_taxonomy_genus.tsv > combined_emu_counts_with_taxonomy_genus.csv
 
 # Clean up
 rm all_unique_taxa.tsv
