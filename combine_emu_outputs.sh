@@ -12,7 +12,7 @@
 #SBATCH --mail-user=agoeckner@ufl.edu
 
 # Directory of emu output (each sample has their own folder)
-cd /blue/duttonc/agoeckner/DOE_16S/03_emu_tax/20260106_Goeckner_DOE_Nov2024-Feb2025_species
+cd /blue/duttonc/agoeckner/DOE_16S/03_emu_tax/20260106_Goeckner_DOE_Nov2024-Feb2025_genus
 
 echo "Creating combined counts table with proper row matching..."
 
@@ -57,22 +57,22 @@ while IFS=$'\t' read -r tax_id species genus family order class phylum clade sup
 done < <(tail -n +2 all_unique_taxa.tsv)
 
 # Step 4: Paste emu counts next to formatted taxonomy table
-paste all_unique_taxa.tsv <(cut -f2- combined_emu_counts.tsv) > combined_emu_counts_with_taxonomy_species.tsv
+paste all_unique_taxa.tsv <(cut -f2- combined_emu_counts.tsv) > combined_emu_counts_with_taxonomy_genus.tsv
 
 # Step 5: Create CSV version (from final table with taxonomy)
-sed 's/\t/,/g' combined_emu_counts_with_taxonomy_species.tsv > combined_emu_counts_with_taxonomy_species.csv
+sed 's/\t/,/g' combined_emu_counts_with_taxonomy_species.tsv > combined_emu_counts_with_taxonomy_genus.csv
 
 # Clean up
 rm all_unique_taxa.tsv
 rm combined_emu_counts.tsv
 
 echo "Done! Created:"
-echo "- combined_emu_counts_with_taxonomy_species.tsv"
-echo "- combined_emu_counts_with_taxonomy_species.csv" 
-echo "Total unique taxa: $(tail -n +2 combined_emu_counts_with_taxonomy_species.tsv | wc -l)"
+echo "- combined_emu_counts_with_taxonomy_genus.tsv"
+echo "- combined_emu_counts_with_taxonomy_genus.csv" 
+echo "Total unique taxa: $(tail -n +2 combined_emu_counts_with_taxonomy_genus.tsv | wc -l)"
 echo "Samples included: ${#SAMPLES[@]}"
 
 # Verify the data looks correct
 echo ""
 echo "First few rows of the combined data:"
-head -3 combined_emu_counts_with_taxonomy_species.tsv
+head -3 combined_emu_counts_with_taxonomy_genus.tsv
