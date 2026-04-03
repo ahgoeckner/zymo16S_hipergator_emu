@@ -26,7 +26,7 @@ conda install -y emu
 pip install osfclient
 
 # Setup Emu database with OSF if needed
-EMU_DB_DIR="/blue/duttonc/duttonc/databases/emu_db"
+EMU_DB_DIR="/blue/duttonc/shared_resources/emu_db_2026-03-31"
 if [ ! -d "$EMU_DB_DIR" ] || [ ! -f "$EMU_DB_DIR/species_taxid.fasta" ]; then
     echo "Downloading Emu database from OSF..." >&2
     mkdir -p "$EMU_DB_DIR"
@@ -42,8 +42,8 @@ INPUT_ROOT="/blue/duttonc/agoeckner/DOE_16S/02_superaccuracy/20251118_Goeckner_D
 OUTPUT_ROOT="/blue/duttonc/agoeckner/DOE_16S/03_emu_tax/20251118_Goeckner_DOE_April2025-July2025_emu"
 mkdir -p "$OUTPUT_ROOT"
 
-# Loop ONLY over S289-S384, checking and skipping processed samples. #193-288
-for i in $(seq 260 288); do
+# Loop ONLY over S193-288 (April/July) or S289-S384 (Nov/Feb), checking and skipping processed samples.
+for i in $(seq 193 288); do
     SAMPLE="S${i}"
     SAMPLE_DIR="$INPUT_ROOT/$SAMPLE"
     OUTDIR="$OUTPUT_ROOT/$SAMPLE"
