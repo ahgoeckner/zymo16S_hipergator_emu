@@ -1,18 +1,18 @@
 #!/bin/bash
 
-#SBATCH --job-name=emu_combine
+#SBATCH --job-name=emu_combine_1
 #SBATCH --account=duttonc
 #SBATCH --qos=duttonc
 #SBATCH --partition=hpg-turin
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=8G
 #SBATCH --time=2:00:00
-#SBATCH --output=/blue/duttonc/agoeckner/DOE_16S/99_logs/emu_combine_batch2species.log
+#SBATCH --output=/blue/duttonc/agoeckner/DOE_16S/99_logs/emu_combine_batch1.log
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=agoeckner@ufl.edu
 
 # Directory of emu output (each sample has their own folder)
-cd /blue/duttonc/agoeckner/DOE_16S/03_emu_tax/20260106_Goeckner_DOE_Nov2024-Feb2025_genus
+cd /blue/duttonc/agoeckner/DOE_16S/03_emu_tax/20260106_Goeckner_DOE_Nov2024-Feb2025_emu
 
 echo "Creating combined counts table with proper row matching..."
 
@@ -57,22 +57,22 @@ while IFS=$'\t' read -r tax_id species genus family order class phylum clade sup
 done < <(tail -n +2 all_unique_taxa.tsv)
 
 # Step 4: Paste emu counts next to formatted taxonomy table
-paste all_unique_taxa.tsv <(cut -f2- combined_emu_counts.tsv) > combined_emu_counts_with_taxonomy_genus.tsv
+paste all_unique_taxa.tsv <(cut -f2- combined_emu_counts.tsv) > combined_emu_counts_with_taxonomy.tsv
 
 # Step 5: Create CSV version (from final table with taxonomy)
-sed 's/\t/,/g' combined_emu_counts_with_taxonomy_genus.tsv > combined_emu_counts_with_taxonomy_genus.csv
+sed 's/\t/,/g' combined_emu_counts_with_taxonomy.tsv > combined_emu_counts_with_taxonomy.csv
 
 # Clean up
 rm all_unique_taxa.tsv
 rm combined_emu_counts.tsv
 
 echo "Done! Created:"
-echo "- combined_emu_counts_with_taxonomy_genus.tsv"
-echo "- combined_emu_counts_with_taxonomy_genus.csv" 
-echo "Total unique taxa: $(tail -n +2 combined_emu_counts_with_taxonomy_genus.tsv | wc -l)"
+echo "- combined_emu_counts_with_taxonomy.tsv"
+echo "- combined_emu_counts_with_taxonomy.csv" 
+echo "Total unique taxa: $(tail -n +2 combined_emu_counts_with_taxonomy.tsv | wc -l)"
 echo "Samples included: ${#SAMPLES[@]}"
 
 # Verify the data looks correct
 echo ""
 echo "First few rows of the combined data:"
-head -3 combined_emu_counts_with_taxonomy_genus.tsv
+head -3 combined_emu_counts_with_taxonomy.tsv
